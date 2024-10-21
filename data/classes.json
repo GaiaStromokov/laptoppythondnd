@@ -1,0 +1,104 @@
+{
+    "classes": [
+        {
+            "name": "Barbarian",
+            "subclasses": [
+                "Berserker",
+                "Totem Warrior"
+            ]
+        },
+        {
+            "name": "Bard",
+            "subclasses": [
+                "Lore",
+                "Valor"
+            ]
+        },
+        {
+            "name": "Cleric",
+            "subclasses": [
+                "Knowledge",
+                "Life",
+                "Light",
+                "Nature",
+                "Tempest",
+                "Trickery",
+                "War"
+            ]
+        },
+        {
+            "name": "Druid",
+            "subclasses": [
+                "Land",
+                "Moon"
+            ]
+        },
+        {
+            "name": "Fighter",
+            "subclasses": [
+                "Champion",
+                "Battle Master",
+                "Eldritch Knight"
+            ]
+        },
+        {
+            "name": "Monk",
+            "subclasses": [
+                "Open Hand",
+                "Shadow",
+                "Four Elements"
+            ]
+        },
+        {
+            "name": "Paladin",
+            "subclasses": [
+                "Devotion",
+                "Ancients",
+                "Vengeance"
+            ]
+        },
+        {
+            "name": "Ranger",
+            "subclasses": [
+                "Hunter",
+                "Beast Master"
+            ]
+        },
+        {
+            "name": "Rogue",
+            "subclasses": [
+                "Thief",
+                "Assassin",
+                "Arcane Trickster"
+            ]
+        },
+        {
+            "name": "Sorcerer",
+            "subclasses": [
+                "Draconic Bloodline",
+                "Wild Magic"
+            ]
+        },
+        {
+            "name": "Warlock",
+            "subclasses": [
+                "Archfey",
+                "Fiend",
+                "Great Old One"
+            ]
+        },
+        {
+            "name": "Wizard",
+            "subclasses": [
+                "Abjuration",
+                "Conjuration",
+                "Divination",
+                "Enchantment",
+                "Evocation",
+                "Illusion",
+                "Necromancy",
+                "Transmutation"
+            ]
+        }
+    ]
+}

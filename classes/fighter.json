@@ -1,0 +1,73 @@
+{
+    "name": "Fighter",
+    "hit_dice": "1d10",
+    "proficiencies": {
+        "armor": ["All armor", "Shields"],
+        "weapons": ["Simple weapons", "Martial weapons"],
+        "tools": [],
+        "saving_throws": ["Strength", "Constitution"],
+        "skills": ["Choose two from Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"]
+    },
+    "abilities_per_level": {
+        "1": {
+            "features": ["Fighting Style", "Second Wind"]
+        },
+        "2": {
+            "features": ["Action Surge (one use)"]
+        },
+        "3": {
+            "features": ["Martial Archetype"]
+        },
+        "4": {
+            "features": ["Ability Score Improvement"]
+        },
+        "5": {
+            "features": ["Extra Attack"]
+        },
+        "6": {
+            "features": ["Ability Score Improvement"]
+        },
+        "7": {
+            "features": ["Martial Archetype feature"]
+        },
+        "8": {
+            "features": ["Ability Score Improvement"]
+        },
+        "9": {
+            "features": ["Indomitable (one use)"]
+        },
+        "10": {
+            "features": ["Martial Archetype feature"]
+        },
+        "11": {
+            "features": ["Extra Attack (2)"]
+        },
+        "12": {
+            "features": ["Ability Score Improvement"]
+        },
+        "13": {
+            "features": ["Indomitable (two uses)"]
+        },
+        "14": {
+            "features": ["Ability Score Improvement"]
+        },
+        "15": {
+            "features": ["Martial Archetype feature"]
+        },
+        "16": {
+            "features": ["Ability Score Improvement"]
+        },
+        "17": {
+            "features": ["Action Surge (two uses)", "Indomitable (three uses)"]
+        },
+        "18": {
+            "features": ["Martial Archetype feature"]
+        },
+        "19": {
+            "features": ["Ability Score Improvement"]
+        },
+        "20": {
+            "features": ["Extra Attack (3)"]
+        }
+    }
+}

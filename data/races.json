@@ -1,0 +1,40 @@
+{
+    "races": [
+        {
+            "name": "Dwarf",
+            "subraces": ["Hill", "Mountain"]
+        },
+        {
+            "name": "Elf",
+            "subraces": ["High", "Wood", "Drow"]
+        },
+        {
+            "name": "Halfling",
+            "subraces": ["Lightfoot", "Stout"]
+        },
+        {
+            "name": "Human",
+            "subraces": ["Variant"]
+        },
+        {
+            "name": "Dragonborn",
+            "subraces": ["Draconic Ancestry"]
+        },
+        {
+            "name": "Gnome",
+            "subraces": ["Forest", "Rock"]
+        },
+        {
+            "name": "Half-Elf",
+            "subraces": []
+        },
+        {
+            "name": "Half-Orc",
+            "subraces": []
+        },
+        {
+            "name": "Tiefling",
+            "subraces": []
+        }
+    ]
+}
