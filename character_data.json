@@ -1,8 +1,8 @@
 {
     "character_class": "Fighter",
     "character_subclass": "Berserker",
-    "character_race": "Dwarf",
-    "character_subrace": "Hill",
+    "character_race": "Elf",
+    "character_subrace": "Drow",
     "character_background": "Gladiator",
     "character_level": 6,
     "base_scores": {

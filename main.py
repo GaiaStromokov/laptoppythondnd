@@ -203,12 +203,14 @@ class InfoFrame(BaseFrame):
         character_race = self.race_dd.get()
         logging.info(f"Race changed to {character_race}")
         self.update_subrace_options()
+        abilities_frame.update_racial_abilities()  # Update racial abilities when race changes
 
     # Method to save subrace
     def save_subrace(self, event=None):  # event is optional for manual calls
         global character_subrace
         character_subrace = self.subrace_dd.get()
         logging.info(f"Subrace changed to {character_subrace}")
+        abilities_frame.update_racial_abilities()  # Update racial abilities when subrace changes
 
     # Method to save background
     def save_background(self, event=None):  # event is optional for manual calls
@@ -370,7 +372,7 @@ class AdminFrame(BaseFrame):
 
 class AbilitiesFrame(BaseFrame):
     def __init__(self, parent, *args, **kwargs):
-        super().__init__(parent, width=300, height=255, *args, **kwargs)
+        super().__init__(parent, width=300, height=765, *args, **kwargs)
         self.setup_widgets()
 
     def setup_widgets(self):
@@ -380,16 +382,23 @@ class AbilitiesFrame(BaseFrame):
         self.racial_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Racial Abilities")
         self.racial_abilities_header.place(x=10, y=50)
 
-        self.class_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Class Abilities")
-        self.class_abilities_header.place(x=10, y=90)
+        self.racial_abilities_text = ck.CTkTextbox(self, font=("Arial", 12), width=280, height=100, fg_color='ivory2')
+        self.racial_abilities_text.place(x=10, y=90)
 
-        self.abilities_text = ck.CTkTextbox(self, font=("Arial", 12), width=280, height=100, fg_color='ivory2')
-        self.abilities_text.place(x=10, y=130)
+        self.class_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Class Abilities")
+        self.class_abilities_header.place(x=10, y=200)
+
+        self.class_abilities_text = ck.CTkTextbox(self, font=("Arial", 12), width=280, height=100, fg_color='ivory2')
+        self.class_abilities_text.place(x=10, y=240)
 
         self.feats_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Feats")
-        self.feats_header.place(x=10, y=240)
+        self.feats_header.place(x=10, y=350)
+
+        self.feats_text = ck.CTkTextbox(self, font=("Arial", 12), width=280, height=100, fg_color='ivory2')
+        self.feats_text.place(x=10, y=390)
 
         self.update_class_abilities()
+        self.update_racial_abilities()
 
     def update_class_abilities(self):
         class_file = f'classes/{character_class.lower()}.json'
@@ -400,11 +409,25 @@ class AbilitiesFrame(BaseFrame):
                 for level in range(1, character_level + 1):
                     abilities.extend(class_data.get('abilities_per_level', {}).get(str(level), {}).get('features', []))
                 abilities_text = "\n".join(abilities)
-                self.abilities_text.delete('1.0', ck.END)
-                self.abilities_text.insert(ck.END, abilities_text)
+                self.class_abilities_text.delete('1.0', ck.END)
+                self.class_abilities_text.insert(ck.END, abilities_text)
         else:
-            self.abilities_text.delete('1.0', ck.END)
-            self.abilities_text.insert(ck.END, f"{character_class} not found")
+            self.class_abilities_text.delete('1.0', ck.END)
+            self.class_abilities_text.insert(ck.END, f"{character_class} not found")
+
+    def update_racial_abilities(self):
+        racial_abilities = self.get_racial_abilities()
+        racial_abilities_text = "\n".join(racial_abilities)
+        self.racial_abilities_text.delete('1.0', ck.END)
+        self.racial_abilities_text.insert(ck.END, racial_abilities_text)
+
+    def get_racial_abilities(self):
+        race_file = f'races/{character_race.lower()}.json'
+        if os.path.exists(race_file):
+            with open(race_file, 'r') as f:
+                race_data = json.load(f)
+                return race_data.get('abilities', [])
+        return []
 
 admin_frame = InfoFrame(main)
 admin_frame.place(x=10, y=10)
