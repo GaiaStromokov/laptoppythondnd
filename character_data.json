@@ -8,27 +8,33 @@
     "base_scores": {
         "Strength": 10,
         "Dexterity": 10,
-        "Constitution": 5,
-        "Intelligence": 10,
+        "Constitution": 10,
+        "Intelligence": 12,
         "Wisdom": 10,
-        "Charisma": 10
+        "Charisma": 12
     },
     "modified_scores": {
         "Strength": 10,
         "Dexterity": 11,
-        "Constitution": 5,
-        "Intelligence": 10,
+        "Constitution": 10,
+        "Intelligence": 12,
         "Wisdom": 12,
-        "Charisma": 10
+        "Charisma": 12
     },
     "modifiers": {
         "Strength": 0,
         "Dexterity": 0,
-        "Constitution": -3,
-        "Intelligence": 0,
+        "Constitution": 0,
+        "Intelligence": 1,
         "Wisdom": 1,
-        "Charisma": 0
+        "Charisma": 1
     },
     "racial_bonus_1": "Dexterity",
-    "racial_bonus_2": "Wisdom"
+    "racial_bonus_2": "Wisdom",
+    "skills": {
+        "Acrobatics": true,
+        "Animal Handling": false,
+        "Arcana": false,
+        "Intimidation": false
+    }
 }
