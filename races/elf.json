@@ -1,34 +1,36 @@
 {
     "name": "Elf",
-    "speed": "30 feet",
-    "abilities": [
-        "Darkvision: 60 feet",
-        "Keen Senses: gain Perception proficiency",
-        "Fey Ancestry: Advantage on charmed saving throws, immune too magical sleep",
-        "Trance: Long rest is a 4 hour meditation"
-    ],
+    "standard_abilities": {
+        "Fey Ancestry": "Advantage on saving throws against being charmed; immune to magical sleep",
+        "Trance": "Elves don't need to sleep. Instead, they meditate deeply for 4 hours (a long rest)"
+    },
     "subraces": {
         "High Elf": {
-            "abilities": [
-                "Elf Weapon Training: Proficiency with longsword, shortsword, shortbow,longbow",
-                "Cantrip: Gain 1 wizard cantrip. Using Int",
-                "Extra Language: Gain 1 language"
-            ]
+            "abilities": {
+                "speed": 30,
+                "Darkvision": 60,
+                "Skill Proficiency":  ["Perception"],
+                "weapon_proficiency": ["longsword", "shortsword", "shortbow", "longbow"],
+                "Cantrip": "Gain 1 wizard cantrip (Intelligence as spellcasting ability)",
+                "Extra Language": "Gain 1 additional language"
+            }
         },
         "Wood Elf": {
-            "abilities": [
-                "Elf Weapon Training: Gain longsword, shortsword, shortbow, longbow",
-                "Fleet of Foot: Your base walking speed increases to 35 feet",
-                "Mask of the Wild: You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena"
-            ]
+            "abilities": {
+                "speed": 35,
+                "Darkvision": 60,
+                "weapon_proficiency": ["spears","scimitars","shortswords","shortbows","longbows"],
+                "Mask of the Wild": "You can attempt to hide even when lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena"
+            }
         },
-        "Dark Elf": {
-            "abilities": [
-                "Superior Darkvision: 120 feet",
-                "Sunlight Sensitivity: Disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight",
-                "Drow Magic: You know the dancing lights cantrip. At 3rd level, you can cast faerie fire once per day. At 5th level, you can cast darkness once per day. Charisma is your spellcasting ability for these spells",
-                "Drow Weapon Training: Proficiency with rapiers, shortswords, and hand crossbows"
-            ]
+        "Drow": {
+            "abilities": {
+                "speed": 30,
+                "Darkvision": 120,
+                "Sunlight Sensitivity": "Disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when in direct sunlight",
+                "Drow Magic": "Dancing Lights cantrip. At 3rd level, cast Faerie Fire once per day. At 5th level, cast Darkness once per day (Charisma as spellcasting ability)",
+                "Drow Weapon Training": "Proficiency with rapiers, shortswords, and hand crossbows"
+            }
         }
     }
 }
