@@ -30,5 +30,8 @@
         "Charisma": 0
     },
     "racial_bonus_1": "Dexterity",
-    "racial_bonus_2": "Wisdom"
+    "racial_bonus_2": "Wisdom",
+    "skills": {
+        "Acrobatics": false
+    }
 }
