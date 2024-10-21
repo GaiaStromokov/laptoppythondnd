@@ -374,29 +374,29 @@ class AdminFrame(BaseFrame):
 
 class AbilitiesFrame(BaseFrame):
     def __init__(self, parent, *args, **kwargs):
-        super().__init__(parent, width=300, height=765, *args, **kwargs)
+        super().__init__(parent, width=360, height=765, *args, **kwargs)
         self.setup_widgets()
 
     def setup_widgets(self):
-        self.header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Features/Abilities")
+        self.header = ck.CTkLabel(self, font=("Arial", 12), width=340, height=30, justify='center', fg_color='ivory2', text="Features/Abilities")
         self.header.place(x=10, y=10)
 
-        self.racial_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Racial Abilities")
+        self.racial_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=340, height=30, justify='center', fg_color='ivory2', text="Racial Abilities")
         self.racial_abilities_header.place(x=10, y=50)
 
-        self.racial_abilities_text = ck.CTkTextbox(self, font=("Arial", 12), width=280, height=100, fg_color='ivory2')
+        self.racial_abilities_text = ck.CTkTextbox(self, font=("Arial", 12), width=340, height=100, fg_color='ivory2')
         self.racial_abilities_text.place(x=10, y=90)
 
-        self.class_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Class Abilities")
+        self.class_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=340, height=30, justify='center', fg_color='ivory2', text="Class Abilities")
         self.class_abilities_header.place(x=10, y=200)
 
-        self.class_abilities_text = ck.CTkTextbox(self, font=("Arial", 12), width=280, height=100, fg_color='ivory2')
+        self.class_abilities_text = ck.CTkTextbox(self, font=("Arial", 12), width=340, height=100, fg_color='ivory2')
         self.class_abilities_text.place(x=10, y=240)
 
-        self.feats_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Feats")
+        self.feats_header = ck.CTkLabel(self, font=("Arial", 12), width=340, height=30, justify='center', fg_color='ivory2', text="Feats")
         self.feats_header.place(x=10, y=350)
 
-        self.feats_text = ck.CTkTextbox(self, font=("Arial", 12), width=280, height=100, fg_color='ivory2')
+        self.feats_text = ck.CTkTextbox(self, font=("Arial", 12), width=340, height=100, fg_color='ivory2')
         self.feats_text.place(x=10, y=390)
 
         self.update_class_abilities()
@@ -443,6 +443,6 @@ attributes_frame.place(x=220, y=10)
 
 # Create and place the AbilitiesFrame
 abilities_frame = AbilitiesFrame(main)
-abilities_frame.place(x=460, y=10)
+abilities_frame.place(x=700, y=10)
 
 main.mainloop()
