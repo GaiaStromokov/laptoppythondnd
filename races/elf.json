@@ -1,6 +1,7 @@
 {
     "name": "Elf",
     "standard_abilities": {
+        "Skill Proficiency":  ["Perception"],
         "Fey Ancestry": "Advantage on saving throws against being charmed; immune to magical sleep",
         "Trance": "Elves don't need to sleep. Instead, they meditate deeply for 4 hours (a long rest)"
     },
@@ -9,7 +10,6 @@
             "abilities": {
                 "speed": 30,
                 "Darkvision": 60,
-                "Skill Proficiency":  ["Perception"],
                 "weapon_proficiency": ["longsword", "shortsword", "shortbow", "longbow"],
                 "Cantrip": "Gain 1 wizard cantrip (Intelligence as spellcasting ability)",
                 "Extra Language": "Gain 1 additional language"
@@ -27,9 +27,9 @@
             "abilities": {
                 "speed": 30,
                 "Darkvision": 120,
-                "Sunlight Sensitivity": "Disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when in direct sunlight",
-                "Drow Magic": "Dancing Lights cantrip. At 3rd level, cast Faerie Fire once per day. At 5th level, cast Darkness once per day (Charisma as spellcasting ability)",
-                "Drow Weapon Training": "Proficiency with rapiers, shortswords, and hand crossbows"
+                "weapon_proficiency" : ["rapiers", "shortswords", "hand crossbows"],
+                "Sunlight Sensitivity": "Disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when in direct sunlight"
+                
             }
         }
     }
