@@ -90,9 +90,11 @@ def calculate_modifier(score):
 
 # Main application window configuration
 main = ck.CTk()
+# Get screen dimensions
+screen_width = main.winfo_screenwidth()
+screen_height = main.winfo_screenheight()
 main.config(bg="BurlyWood4")
-main_size = [1000, 800]
-main.geometry(f"{main_size[0]}x{main_size[1]}")
+main.geometry(f"{screen_width}x{screen_height}+0+0")  # Set size to full screen
 main.title("Main")
 
 load_character_data()
@@ -433,7 +435,7 @@ admin_frame = InfoFrame(main)
 admin_frame.place(x=10, y=10)
 
 admin_frame = AdminFrame(main)
-admin_frame.place(x=780, y=10)  # Adjust x and y to place it in the far right corner
+admin_frame.place(x=1320, y=10)  # Adjust x and y to place it in the far right corner
 
 # Create and place the AttributesFrame
 attributes_frame = AttributesFrame(main)
