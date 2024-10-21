@@ -316,6 +316,12 @@ class AttributesFrame(BaseFrame):
         modifiers[attribute] = calculate_modifier(modified_scores[attribute])
         # Update the score and modifier labels
         self.setup_widgets()
+        self.update_skill_modifiers()
+
+    def update_skill_modifiers(self):
+        for skill, ability in skills_frame.skills:
+            skills_frame.skill_modifiers[skill] = skills_frame.calculate_skill_modifier(skill, ability)
+        skills_frame.setup_widgets()
 
 class AdminFrame(BaseFrame):
     def __init__(self, parent, *args, **kwargs):
@@ -376,10 +382,11 @@ class AdminFrame(BaseFrame):
             modified_scores[attribute] = base_scores[attribute] + bonus_1 + bonus_2
             modifiers[attribute] = calculate_modifier(modified_scores[attribute])
         attributes_frame.setup_widgets()
+        attributes_frame.update_skill_modifiers()
 
 class AbilitiesFrame(BaseFrame):
     def __init__(self, parent, *args, **kwargs):
-        super().__init__(parent, width=300, height=255, *args, **kwargs)
+        super().__init__(parent, width=300, height=400, *args, **kwargs)
         self.setup_widgets()
 
     def setup_widgets(self):
@@ -424,7 +431,7 @@ class SkillsFrame(BaseFrame):
         self.header = ck.CTkLabel(self, font=("Arial", 12), width=200, height=30, justify='center', fg_color='ivory2', text="Skills")
         self.header.place(x=10, y=10)
 
-        skills = [
+        self.skills = [
             ("Acrobatics", "Dexterity"),
             ("Animal Handling", "Wisdom"),
             ("Arcana", "Intelligence"),
@@ -445,7 +452,9 @@ class SkillsFrame(BaseFrame):
             ("Survival", "Wisdom")
         ]
 
-        for i, (skill, ability) in enumerate(skills):
+        self.skill_modifiers = {skill: self.calculate_skill_modifier(skill, ability) for skill, ability in self.skills}
+
+        for i, (skill, ability) in enumerate(self.skills):
             y_position = 50 + i * 35  # Adjust y position for each row
 
             skill_label = ck.CTkLabel(self, font=("Arial", 12), width=100, height=30, justify='center', fg_color='ivory2', text=skill)
@@ -454,7 +463,7 @@ class SkillsFrame(BaseFrame):
             proficiency_button = ck.CTkButton(self, text="", width=30, height=30, fg_color="green" if skill_proficiencies.get(skill, False) else "red", command=lambda s=skill: self.toggle_proficiency(s))
             proficiency_button.place(x=120, y=y_position)
 
-            modifier_label = ck.CTkLabel(self, font=("Arial", 12), width=50, height=30, justify='center', fg_color='ivory2', textvariable=ck.StringVar(value=self.calculate_skill_modifier(skill, ability)))
+            modifier_label = ck.CTkLabel(self, font=("Arial", 12), width=50, height=30, justify='center', fg_color='ivory2', textvariable=ck.StringVar(value=self.skill_modifiers[skill]))
             modifier_label.place(x=160, y=y_position)
 
     def toggle_proficiency(self, skill):
@@ -471,7 +480,7 @@ admin_frame = InfoFrame(main)
 admin_frame.place(x=10, y=10)
 
 admin_frame = AdminFrame(main)
-admin_frame.place(x=main_size[0] - 210, y=10)  # Adjust x and y to place it in the far right corner
+admin_frame.place(x=1320, y=10)  # Adjust x and y to place it in the far right corner
 
 # Create and place the AttributesFrame
 attributes_frame = AttributesFrame(main)
@@ -479,7 +488,7 @@ attributes_frame.place(x=220, y=10)
 
 # Create and place the AbilitiesFrame
 abilities_frame = AbilitiesFrame(main)
-abilities_frame.place(x=main_size[0] - 510, y=10)
+abilities_frame.place(x=1000, y=10)
 
 # Create and place the SkillsFrame
 skills_frame = SkillsFrame(main)
