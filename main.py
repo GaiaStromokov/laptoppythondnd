@@ -189,6 +189,7 @@ class InfoFrame(BaseFrame):
         character_class = self.class_dd.get()
         logging.info(f"Class changed to {character_class}")
         self.update_subclass_options()
+        abilities_frame.update_class_abilities()  # Update class abilities when class changes
 
     # Method to save subclass
     def save_subclass(self, event=None):  # event is optional for manual calls
@@ -223,6 +224,7 @@ class InfoFrame(BaseFrame):
             self.level_var.set(character_level)
             self.update_proficiency_bonus()
             self.update_subclass_state()
+            abilities_frame.update_class_abilities()  # Update class abilities when level changes
 
     # Method to decrement level
     def decrement_level(self):
@@ -232,6 +234,7 @@ class InfoFrame(BaseFrame):
             self.level_var.set(character_level)
             self.update_proficiency_bonus()
             self.update_subclass_state()
+            abilities_frame.update_class_abilities()  # Update class abilities when level changes
 
     # Method to update subclass options based on selected class
     def update_subclass_options(self):
@@ -365,6 +368,44 @@ class AdminFrame(BaseFrame):
             modifiers[attribute] = calculate_modifier(modified_scores[attribute])
         attributes_frame.setup_widgets()
 
+class AbilitiesFrame(BaseFrame):
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(parent, width=300, height=255, *args, **kwargs)
+        self.setup_widgets()
+
+    def setup_widgets(self):
+        self.header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Features/Abilities")
+        self.header.place(x=10, y=10)
+
+        self.racial_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Racial Abilities")
+        self.racial_abilities_header.place(x=10, y=50)
+
+        self.class_abilities_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Class Abilities")
+        self.class_abilities_header.place(x=10, y=90)
+
+        self.abilities_text = ck.CTkTextbox(self, font=("Arial", 12), width=280, height=100, fg_color='ivory2')
+        self.abilities_text.place(x=10, y=130)
+
+        self.feats_header = ck.CTkLabel(self, font=("Arial", 12), width=280, height=30, justify='center', fg_color='ivory2', text="Feats")
+        self.feats_header.place(x=10, y=240)
+
+        self.update_class_abilities()
+
+    def update_class_abilities(self):
+        class_file = f'classes/{character_class.lower()}.json'
+        if os.path.exists(class_file):
+            with open(class_file, 'r') as f:
+                class_data = json.load(f)
+                abilities = []
+                for level in range(1, character_level + 1):
+                    abilities.extend(class_data.get('abilities_per_level', {}).get(str(level), {}).get('features', []))
+                abilities_text = "\n".join(abilities)
+                self.abilities_text.delete('1.0', ck.END)
+                self.abilities_text.insert(ck.END, abilities_text)
+        else:
+            self.abilities_text.delete('1.0', ck.END)
+            self.abilities_text.insert(ck.END, f"{character_class} not found")
+
 admin_frame = InfoFrame(main)
 admin_frame.place(x=10, y=10)
 
@@ -374,5 +415,9 @@ admin_frame.place(x=780, y=10)  # Adjust x and y to place it in the far right co
 # Create and place the AttributesFrame
 attributes_frame = AttributesFrame(main)
 attributes_frame.place(x=220, y=10)
+
+# Create and place the AbilitiesFrame
+abilities_frame = AbilitiesFrame(main)
+abilities_frame.place(x=460, y=10)
 
 main.mainloop()

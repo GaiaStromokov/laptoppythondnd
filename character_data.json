@@ -1,10 +1,10 @@
 {
-    "character_class": "Cleric",
+    "character_class": "Fighter",
     "character_subclass": "Berserker",
     "character_race": "Dwarf",
     "character_subrace": "Hill",
     "character_background": "Gladiator",
-    "character_level": 1,
+    "character_level": 6,
     "base_scores": {
         "Strength": 10,
         "Dexterity": 10,
