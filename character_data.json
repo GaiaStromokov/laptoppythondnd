@@ -2,9 +2,9 @@
     "character_class": "Fighter",
     "character_subclass": "Berserker",
     "character_race": "Elf",
-    "character_subrace": "Drow",
+    "character_subrace": "Variant",
     "character_background": "Gladiator",
-    "character_level": 1,
+    "character_level": 9,
     "base_scores": {
         "Strength": 10,
         "Dexterity": 12,
@@ -32,11 +32,11 @@
     "racial_bonus_1": "Dexterity",
     "racial_bonus_2": "Wisdom",
     "skills": {
-        "Acrobatics": true,
+        "Acrobatics": false,
         "Arcana": false,
         "Intimidation": false,
         "Persuasion": false,
         "Survival": false,
-        "Animal Handling": true
+        "Animal Handling": false
     }
 }

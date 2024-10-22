@@ -6,68 +6,179 @@
         "weapons": ["Simple weapons", "Martial weapons"],
         "tools": [],
         "saving_throws": ["Strength", "Constitution"],
-        "skills": ["Choose two from Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"]
+        "skills": {
+            "choice": 2,
+            "options": ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"]
+        }
     },
     "abilities_per_level": {
         "1": {
-            "features": ["Fighting Style", "Second Wind"]
+            "features": [
+                {
+                    "name": "Fighting Style",
+                    "description": "Choose a fighting style from the list of options."
+                },
+                {
+                    "name": "Second Wind",
+                    "description": "On your turn, you can use a bonus action to regain hit points equal to 1d10 + your Fighter level."
+                }
+            ]
         },
         "2": {
-            "features": ["Action Surge (one use)"]
+            "features": [
+                {
+                    "name": "Action Surge (one use)",
+                    "description": "On your turn, you can take one additional action on top of your regular action and a possible bonus action."
+                }
+            ]
         },
         "3": {
-            "features": ["Martial Archetype"]
+            "features": [
+                {
+                    "name": "Martial Archetype",
+                    "description": "Choose an archetype that defines your fighting style."
+                }
+            ]
         },
         "4": {
-            "features": ["Ability Score Improvement"]
+            "features": [
+                {
+                    "name": "Ability Score Improvement",
+                    "description": "Increase one ability score by 2 or two ability scores by 1."
+                }
+            ]
         },
         "5": {
-            "features": ["Extra Attack"]
+            "features": [
+                {
+                    "name": "Extra Attack",
+                    "description": "You can attack twice, instead of once, whenever you take the Attack action on your turn."
+                }
+            ]
         },
         "6": {
-            "features": ["Ability Score Improvement"]
+            "features": [
+                {
+                    "name": "Ability Score Improvement",
+                    "description": "Increase one ability score by 2 or two ability scores by 1."
+                }
+            ]
         },
         "7": {
-            "features": ["Martial Archetype feature"]
+            "features": [
+                {
+                    "name": "Martial Archetype feature",
+                    "description": "Gain a feature from your chosen Martial Archetype."
+                }
+            ]
         },
         "8": {
-            "features": ["Ability Score Improvement"]
+            "features": [
+                {
+                    "name": "Ability Score Improvement",
+                    "description": "Increase one ability score by 2 or two ability scores by 1."
+                }
+            ]
         },
         "9": {
-            "features": ["Indomitable (one use)"]
+            "features": [
+                {
+                    "name": "Indomitable (one use)",
+                    "description": "You can reroll a saving throw that you fail. If you do so, you must use the new roll."
+                }
+            ]
         },
         "10": {
-            "features": ["Martial Archetype feature"]
+            "features": [
+                {
+                    "name": "Martial Archetype feature",
+                    "description": "Gain a feature from your chosen Martial Archetype."
+                }
+            ]
         },
         "11": {
-            "features": ["Extra Attack (2)"]
+            "features": [
+                {
+                    "name": "Extra Attack (2)",
+                    "description": "You can attack three times, instead of twice, whenever you take the Attack action on your turn."
+                }
+            ]
         },
         "12": {
-            "features": ["Ability Score Improvement"]
+            "features": [
+                {
+                    "name": "Ability Score Improvement",
+                    "description": "Increase one ability score by 2 or two ability scores by 1."
+                }
+            ]
         },
         "13": {
-            "features": ["Indomitable (two uses)"]
+            "features": [
+                {
+                    "name": "Indomitable (two uses)",
+                    "description": "You can use Indomitable twice between long rests."
+                }
+            ]
         },
         "14": {
-            "features": ["Ability Score Improvement"]
+            "features": [
+                {
+                    "name": "Ability Score Improvement",
+                    "description": "Increase one ability score by 2 or two ability scores by 1."
+                }
+            ]
         },
         "15": {
-            "features": ["Martial Archetype feature"]
+            "features": [
+                {
+                    "name": "Martial Archetype feature",
+                    "description": "Gain a feature from your chosen Martial Archetype."
+                }
+            ]
         },
         "16": {
-            "features": ["Ability Score Improvement"]
+            "features": [
+                {
+                    "name": "Ability Score Improvement",
+                    "description": "Increase one ability score by 2 or two ability scores by 1."
+                }
+            ]
         },
         "17": {
-            "features": ["Action Surge (two uses)", "Indomitable (three uses)"]
+            "features": [
+                {
+                    "name": "Action Surge (two uses)",
+                    "description": "You can use Action Surge twice between short or long rests."
+                },
+                {
+                    "name": "Indomitable (three uses)",
+                    "description": "You can use Indomitable three times between long rests."
+                }
+            ]
         },
         "18": {
-            "features": ["Martial Archetype feature"]
+            "features": [
+                {
+                    "name": "Martial Archetype feature",
+                    "description": "Gain a feature from your chosen Martial Archetype."
+                }
+            ]
         },
         "19": {
-            "features": ["Ability Score Improvement"]
+            "features": [
+                {
+                    "name": "Ability Score Improvement",
+                    "description": "Increase one ability score by 2 or two ability scores by 1."
+                }
+            ]
         },
         "20": {
-            "features": ["Extra Attack (3)"]
+            "features": [
+                {
+                    "name": "Extra Attack (3)",
+                    "description": "You can attack four times, instead of three, whenever you take the Attack action on your turn."
+                }
+            ]
         }
     }
 }

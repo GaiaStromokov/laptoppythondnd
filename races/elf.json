@@ -1,35 +1,52 @@
 {
     "name": "Elf",
-    "standard_abilities": {
-        "Skill Proficiency":  ["Perception"],
-        "Fey Ancestry": "Advantage on saving throws against being charmed; immune to magical sleep",
-        "Trance": "Elves don't need to sleep. Instead, they meditate deeply for 4 hours (a long rest)"
+    "shared_abilities": {
+        "fey_ancestry": {
+            "description": "Advantage on saving throws against being charmed; immune to magical sleep"
+        },
+        "trance": {
+            "description": "Elves don't need to sleep. Instead, they meditate deeply for 4 hours (a long rest)"
+        }
     },
     "subraces": {
         "High Elf": {
             "abilities": {
                 "speed": 30,
-                "Darkvision": 60,
+                "darkvision": 60,
+                "skill_proficiency": ["Perception"],
                 "weapon_proficiency": ["longsword", "shortsword", "shortbow", "longbow"],
-                "Cantrip": "Gain 1 wizard cantrip (Intelligence as spellcasting ability)",
-                "Extra Language": "Gain 1 additional language"
+                "magic": {
+                    "cantrip": "Gain 1 wizard cantrip (Intelligence as spellcasting ability)"
+                },
+                "extra_language": "Gain 1 additional language"
             }
         },
         "Wood Elf": {
             "abilities": {
                 "speed": 35,
-                "Darkvision": 60,
-                "weapon_proficiency": ["spears","scimitars","shortswords","shortbows","longbows"],
-                "Mask of the Wild": "You can attempt to hide even when lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena"
+                "darkvision": 60,
+                "weapon_proficiency": ["spears", "scimitars", "shortswords", "shortbows", "longbows"],
+                "special_ability": {
+                    "mask_of_the_wild": "You can attempt to hide even when lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena"
+                }
             }
         },
         "Drow": {
             "abilities": {
                 "speed": 30,
-                "Darkvision": 120,
-                "weapon_proficiency" : ["rapiers", "shortswords", "hand crossbows"],
-                "Sunlight Sensitivity": "Disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when in direct sunlight"
-                
+                "darkvision": 120,
+                "special_conditions": {
+                    "sunlight_sensitivity": "Disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when in direct sunlight"
+                },
+                "magic": {
+                    "drow_magic": {
+                        "cantrip": "Dancing Lights",
+                        "3rd_level": "Faerie Fire once per day",
+                        "5th_level": "Darkness once per day"
+                    },
+                    "spellcasting_ability": "Charisma"
+                },
+                "weapon_proficiency": ["rapiers", "shortswords", "hand crossbows"]
             }
         }
     }
