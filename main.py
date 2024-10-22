@@ -33,6 +33,8 @@ racial_bonus_2 = ""
 # Global variables for modifiers
 modifiers = {attr: 0 for attr in base_scores.keys()}
 
+level_asi_choices = {level: {"type": None, "attributes": []} for level in range(1, 21)}
+
 # Global variable for skill proficiencies
 skill_proficiencies = {}
 
@@ -221,6 +223,8 @@ class InfoFrame(BaseFrame):
             self.update_subclass_state()
             abilities_frame.update_class_abilities()
             admin_frame.check_for_asi_or_feat()
+            # Recalculate all ASIs based on the new level
+            attributes_frame.update_all_modified_scores()
 
     def decrement_level(self):
         global character_level
@@ -231,6 +235,9 @@ class InfoFrame(BaseFrame):
             self.update_subclass_state()
             abilities_frame.update_class_abilities()
             admin_frame.check_for_asi_or_feat()
+            # Recalculate all ASIs based on the new level
+            attributes_frame.update_all_modified_scores()
+
 
     def update_subclass_options(self):
         selected_class = self.class_dd.get()
@@ -308,6 +315,9 @@ class AttributesFrame(BaseFrame):
 class AdminFrame(BaseFrame):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, width=400, height=700, *args, **kwargs)
+        # Keep track of the previously selected proficiencies
+        self.previous_proficiency_1 = None
+        self.previous_proficiency_2 = None
         self.setup_widgets()
 
     def setup_widgets(self):
@@ -346,8 +356,6 @@ class AdminFrame(BaseFrame):
         )
         dropdown_plus_2.place(x=10, y=110)
 
-        
-
     def setup_proficiency_widgets(self):
         proficiencies = ["Athletics", "Acrobatics", "Arcana", "History", "Insight", "Perception", "Stealth"]
 
@@ -370,10 +378,10 @@ class AdminFrame(BaseFrame):
 
     def setup_asi_and_feat_widgets(self):
         levels_with_asi = [4, 8, 12, 16, 19]
-        attributes = ["Str", "Dex", "Con", "Int", "Wis", "Cha"]
+        attributes = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
         feats = ["Alert", "Actor", "Athlete", "Charger", "Crossbow Expert", "Dungeon Delver"]
 
-        current_y = 50  # Starting position for ASI/Feat blocks
+        current_y = 50
 
         for level in levels_with_asi:
             if character_level >= level:
@@ -384,20 +392,17 @@ class AdminFrame(BaseFrame):
                 # Dropdown to select ASI or feat
                 asi_feat_choice = ck.CTkComboBox(
                     self, font=("Helvetica", 12), width=100,
-                    values=["ASCI", "Feat"],
-                    command=lambda choice, lvl=level: self.show_asi_or_feat(choice, lvl, attributes, feats, current_y -270)
+                    values=["ASI", "Feat"],
+                    command=lambda choice, lvl=level: self.show_asi_or_feat(choice, lvl, attributes, feats, current_y - 270)
                 )
-                asi_feat_choice.place(x=160, y=current_y+30)
+                asi_feat_choice.place(x=160, y=current_y + 30)
                 current_y += 60
 
     def show_asi_or_feat(self, choice, level, attributes, feats, y_position):
-        # Clear previous selection widgets at this position
-        for widget in self.winfo_children():
-            if widget.winfo_y() == y_position:
-                widget.place_forget()
-
-        if choice == "ASCI":
-            # Two dropdowns for ASI, side by side
+        # Ensure only ASI/feat is processed at a given level
+        if choice == "ASI":
+            level_asi_choices[level]["type"] = "ASI"
+            # Dropdowns for ASIs
             asi_dropdown_1 = ck.CTkComboBox(
                 self, font=("Helvetica", 12), width=60, values=attributes, 
                 command=lambda value: self.update_ability_score(value, level, slot=1)
@@ -411,7 +416,7 @@ class AdminFrame(BaseFrame):
             asi_dropdown_2.place(x=330, y=y_position)
 
         elif choice == "Feat":
-            # Single dropdown for Feat
+            level_asi_choices[level]["type"] = "Feat"
             feats_dropdown = ck.CTkComboBox(
                 self, font=("Helvetica", 12), width=100, values=feats,
                 command=lambda feat: self.update_feat_choice(feat, level)
@@ -437,7 +442,25 @@ class AdminFrame(BaseFrame):
         logging.info(f"Level {level} selected feat: {feat}")
 
     def select_proficiency(self, proficiency, slot):
-        logging.info(f"Selected proficiency {slot}: {proficiency}")
+        global skill_proficiencies
+        
+        # Check which slot is being modified and unselect previous proficiency if any
+        if slot == 1:
+            if self.previous_proficiency_1 and self.previous_proficiency_1 != proficiency:
+                skill_proficiencies[self.previous_proficiency_1] = False
+            self.previous_proficiency_1 = proficiency
+        elif slot == 2:
+            if self.previous_proficiency_2 and self.previous_proficiency_2 != proficiency:
+                skill_proficiencies[self.previous_proficiency_2] = False
+            self.previous_proficiency_2 = proficiency
+        
+        # Toggle the new proficiency status to True
+        skill_proficiencies[proficiency] = True
+        logging.info(f"Selected proficiency {slot}: {proficiency} - Enabled")
+        
+        # Refresh SkillsFrame to show updated proficiencies
+        skills_frame.setup_widgets()
+
 
 
 class AbilitiesFrame(BaseFrame):

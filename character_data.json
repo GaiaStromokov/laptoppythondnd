@@ -2,41 +2,45 @@
     "character_class": "Fighter",
     "character_subclass": "Berserker",
     "character_race": "Elf",
-    "character_subrace": "Variant",
+    "character_subrace": "Drow",
     "character_background": "Gladiator",
-    "character_level": 9,
+    "character_level": 4,
     "base_scores": {
         "Strength": 10,
-        "Dexterity": 12,
-        "Constitution": 5,
+        "Dexterity": 10,
+        "Constitution": 10,
         "Intelligence": 10,
         "Wisdom": 10,
         "Charisma": 10
     },
     "modified_scores": {
-        "Strength": 10,
-        "Dexterity": 13,
-        "Constitution": 5,
+        "Strength": 11,
+        "Dexterity": 12,
+        "Constitution": 10,
         "Intelligence": 10,
-        "Wisdom": 12,
+        "Wisdom": 10,
         "Charisma": 10
     },
     "modifiers": {
         "Strength": 0,
         "Dexterity": 1,
-        "Constitution": -3,
+        "Constitution": 0,
         "Intelligence": 0,
-        "Wisdom": 1,
+        "Wisdom": 0,
         "Charisma": 0
     },
-    "racial_bonus_1": "Dexterity",
-    "racial_bonus_2": "Wisdom",
+    "racial_bonus_1": "Strength",
+    "racial_bonus_2": "Dexterity",
     "skills": {
         "Acrobatics": false,
         "Arcana": false,
         "Intimidation": false,
         "Persuasion": false,
         "Survival": false,
-        "Animal Handling": false
+        "Animal Handling": false,
+        "Athletics": true,
+        "History": true,
+        "Insight": false,
+        "Stealth": false
     }
 }
